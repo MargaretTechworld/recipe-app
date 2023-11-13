@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>RecipeApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -11,11 +12,13 @@
   </head>
 
   <body>
+  <%= render 'helpers/header' %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <% if user_signed_in? %> 
-  <%= link_to "sign_out", destroy_user_session_path, data:{turbo_method: :delete} %>
-<% end %>
+    <%= link_to "sign_out", destroy_user_session_path, data:{turbo_method: :delete} %>
+  <% end %>
     <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>
