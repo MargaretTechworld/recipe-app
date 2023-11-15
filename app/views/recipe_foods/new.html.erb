@@ -1,0 +1,14 @@
+<div class="form ff">
+  <h4>Add new Ingredient</h4>
+  <%= form_with(model: [@recipe, @recipe_food], url: recipe_recipe_foods_path(@recipe), local: true) do |form| %>
+    <div class="input noBorder">
+<%= form.select :food, options_for_select(@ingredients), { prompt: 'Pick ingredient...' }, class: 'form-select my-2 btn btn-outline-secondary', style: 'height:40px; width:250px' %>
+        <%= link_to "Add Food", new_food_path, class: "btn btn-dark", method: :post %>
+    </div>
+    <div class="input noBorder">
+      <%= form.text_field :quantity, placeholder: 'Enter quantity', required: true, class: 'form-input' %>
+    </div>
+
+    <%= form.submit "Create Ingredient", class: "submit btn btn-dark" %>
+  <% end %>
+</div>
