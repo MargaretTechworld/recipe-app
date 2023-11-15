@@ -9,7 +9,49 @@ class RecipeFoodsController < ApplicationController
     @foods = @user.foods
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new
-    @ingredients = []
+    @ingredients = [
+      'Salt',
+      'Pepper',
+      'Olive Oil',
+      'Garlic',
+      'Onion',
+      'Tomato',
+      'Chicken',
+      'Beef',
+      'Pork',
+      'Fish',
+      'Lamb',
+      'Butter',
+      'Flour',
+      'Sugar',
+      'Eggs',
+      'Milk',
+      'Cheese',
+      'Rice',
+      'Pasta',
+      'Bread',
+      'Potatoes',
+      'Carrots',
+      'Bell Pepper',
+      'Broccoli',
+      'Spinach',
+      'Mushrooms',
+      'Cucumber',
+      'Avocado',
+      'Lemon',
+      'Lime',
+      'Cilantro',
+      'Basil',
+      'Thyme',
+      'Rosemary',
+      'Ginger',
+      'Cinnamon',
+      'Nutmeg',
+      'Vanilla Extract',
+      'Soy Sauce',
+      'Honey'
+    ]
+
     @foods.each do |food|
       @ingredients << ("#{food.name} in #{food.measurement_unit}")
     end
@@ -19,7 +61,7 @@ class RecipeFoodsController < ApplicationController
     recipe = Recipe.find(params[:recipe_id])
     quantity = params[:recipe_food][:quantity]
     food_unit = params[:recipe_food][:food]
-    food_name = food_unit.split.first
+    food_unit.split.first
     food = Food.find(params[:recipe_food][:food_id])
 
     recipe_food = RecipeFood.new(food:, recipe:, quantity:)
