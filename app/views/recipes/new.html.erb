@@ -1,0 +1,22 @@
+<h4>Add new food recipe</h4>
+
+<%= form_for @recipe, url: recipes_path do |form| %>
+  <div class="input noBorder">
+    <%= form.text_field :name, placeholder: "Recipe title...", required: true%>
+  </div>
+  <div class="input noBorder">
+    <%= form.text_field :description, placeholder: "Recipe description...", required: true%>
+  </div>
+    <div class="input noBorder">
+    <%= form.text_field :preparation_time, placeholder: "Preparation time in minutes", required: true%>
+  </div>
+  <div class="input noBorder">
+    <%= form.text_field :cooking_time, placeholder: "Cooking time in minutes", required: true%>
+  </div>  
+  <div class="input noBorder">
+    <%= form.select :public, options_for_select(['true', 'false']), prompt: 'Publuc or private?' %>
+  </div>
+ <button class="btn btn-dark">
+  <%= form.submit "Create Recipe", class: "btn btn-dark noBorder" %>
+</button>
+ <%end%>

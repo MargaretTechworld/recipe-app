@@ -1,0 +1,13 @@
+<div class="recipe">
+<%= link_to "Add new recipe", new_recipe_path, class: "add btn btn-dark" %>
+  <h3 class="food_title">Here is a list of my recipes:</h3>
+  <% recipes.each do |recipe|%>
+    <div class='recipe_box table'>
+      <div class='recipe_name '>
+      <h3 class=""><%= link_to "#{recipe.name}", recipe_path(recipe.id) %></h3>
+      <span class="btn"><%= link_to "REMOVE", recipe_path(recipe), data: { turbo_method: :delete, confirm: 'Are you sure?' } %></span>
+      </div>
+        <p><%= recipe.description%></p>
+    </div>
+  <%end%>
+</div>
