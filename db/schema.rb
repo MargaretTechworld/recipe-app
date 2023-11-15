@@ -19,20 +19,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_132443) do
     t.string "measurement_unit"
     t.decimal "price", precision: 10, scale: 2
     t.integer "quantity"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_foods_on_users_id"
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "recipe_foods", force: :cascade do |t|
     t.integer "quantity"
-    t.bigint "foods_id", null: false
-    t.bigint "recipes_id", null: false
+    t.bigint "food_id", null: false
+    t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["foods_id"], name: "index_recipe_foods_on_foods_id"
-    t.index ["recipes_id"], name: "index_recipe_foods_on_recipes_id"
+    t.index ["food_id"], name: "index_recipe_foods_on_food_id"
+    t.index ["recipe_id"], name: "index_recipe_foods_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -41,10 +41,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_132443) do
     t.integer "cooking_time"
     t.text "description"
     t.boolean "public"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_recipes_on_users_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,8 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_132443) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "foods", "users", column: "users_id"
-  add_foreign_key "recipe_foods", "foods", column: "foods_id"
-  add_foreign_key "recipe_foods", "recipes", column: "recipes_id"
-  add_foreign_key "recipes", "users", column: "users_id"
+  add_foreign_key "foods", "users"
+  add_foreign_key "recipe_foods", "foods"
+  add_foreign_key "recipe_foods", "recipes"
+  add_foreign_key "recipes", "users"
 end
