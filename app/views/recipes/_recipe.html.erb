@@ -5,7 +5,7 @@
     <div class='recipe_box table'>
       <div class='recipe_name '>
       <h3 class=""><%= link_to "#{recipe.name}", recipe_path(recipe.id) %></h3>
-      <span class="btn"><%= link_to "REMOVE", recipe_path(recipe), data: { turbo_method: :delete, confirm: 'Are you sure?' } %></span>
+      <span class="btn"><%= link_to "Delete", recipe_path(recipe), data: { turbo_method: :delete, confirm: 'Are you sure?' } %></span>
       </div>
         <p><%= recipe.description%></p>
     </div>

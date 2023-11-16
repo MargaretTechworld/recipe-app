@@ -2,19 +2,19 @@
 
 <%= form_for @recipe, url: recipes_path do |form| %>
   <div class="input noBorder">
-    <%= form.text_field :name, placeholder: "Recipe title...", required: true%>
+    <%= form.text_field :name, placeholder: "Recipe title...", required: true, class:"nput-sec" %>
   </div>
   <div class="input noBorder">
-    <%= form.text_field :description, placeholder: "Recipe description...", required: true%>
+    <%= form.text_field :description, placeholder: "Recipe description...", required: true, class:"nput-sec" %>
   </div>
     <div class="input noBorder">
-    <%= form.text_field :preparation_time, placeholder: "Preparation time in minutes", required: true%>
+    <%= form.text_field :preparation_time, placeholder: "Preparation time in minutes", required: true, class:"nput-sec" %>
   </div>
   <div class="input noBorder">
-    <%= form.text_field :cooking_time, placeholder: "Cooking time in minutes", required: true%>
+    <%= form.text_field :cooking_time, placeholder: "Cooking time in minutes", required: true, class:"nput-sec" %>
   </div>  
   <div class="input noBorder">
-    <%= form.select :public, options_for_select(['true', 'false']), prompt: 'Publuc or private?' %>
+    <%= form.select :public, options_for_select(['true', 'false']), prompt: 'Public?', class:"nput-sec"  %>
   </div>
  <button class="btn btn-dark">
   <%= form.submit "Create Recipe", class: "btn btn-dark noBorder" %>
