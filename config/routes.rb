@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users
-  
   root "users#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get '/recipes/public', to: 'recipes#public'
-  resources :foods, only: [:index, :new, :create, :destroy]
-  resources :recipes, only:[:index, :new, :create, :destroy]
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  get '/recipes/public'
+  resources :foods, only: [:index, :new, :create, :destroy, :show]
+  resources :recipes, except: [:edit, :update] do
+    member do
+      patch :public_toggle
+    end
+  end
+  resources :recipes, except: %i[edit update] do
+    resources :recipe_foods, except: %i[edit update]
+    collection do
+      get 'public'
+    end
+    member do
+      get 'general_shopping_list'
+    end
+  end
+  resources :recipe_foods, only: [:new, :create, :destroy] do
+    patch :modify, on: :member
+  end
 end
