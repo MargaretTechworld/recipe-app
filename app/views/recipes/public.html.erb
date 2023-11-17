@@ -4,7 +4,7 @@
     <div class='recipe_box'>
       <div class='recipe_name'>
        <h3><%= link_to "#{recipe.name}", recipe_path(recipe.id) %></h3>
-        <p class="recipe_user">by: <%= recipe.user.name %></p>
+        <p class="recipe_user">by: <%= recipe.name %></p>
       </div>
       <div class="recipe_description">
         <p>total number of foods: <%= recipe.foods.count %></p>
