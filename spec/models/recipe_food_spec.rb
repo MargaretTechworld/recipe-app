@@ -13,7 +13,7 @@ RSpec.describe RecipeFood, type: :model do
   end
 
   it 'is not valid without a quantity' do
-    invalid_recipe_food = RecipeFood.new(food: food, recipe: recipe, quantity: nil)
+    invalid_recipe_food = RecipeFood.create(food: food, recipe: recipe, quantity: nil)
     expect(invalid_recipe_food).not_to be_valid
   end
   
