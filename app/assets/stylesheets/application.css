@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- body {
+body {
   padding: 10px;
 }
 
@@ -133,7 +133,7 @@ a {
 
 .navigation-bar {
   border-radius: 6px;
-  background-color: #222222;
+  background-color: #222;
   list-style: circle;
   display: flex;
   flex-direction: row;
@@ -164,7 +164,7 @@ a {
   border: solid 1px grey;
   border-radius: 5px;
   margin-top: 10px;
-  background-color: #F1EFEF;
+  background-color: #f1efef;
 }
 
 .recipe_name {
@@ -179,6 +179,6 @@ a {
 
 .recipe_box p {
   line-height: 30px;
-  color: #26577C;
+  color: #26577c;
   font-weight: 500;
 }

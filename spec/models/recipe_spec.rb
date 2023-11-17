@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
   let(:user) { User.create!(email: 'test@example.com', password: 'password') }
-  subject { Recipe.create!(name: 'Test Recipe', description: 'Test Description', preparation_time: 30, cooking_time: 45, user: user) }
+  subject do
+    Recipe.create!(name: 'Test Recipe', description: 'Test Description', preparation_time: 30, cooking_time: 45, user:)
+  end
 
   it 'should have a name' do
     subject.name = nil

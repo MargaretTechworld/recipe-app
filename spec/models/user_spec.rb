@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid with a duplicate email' do
-    existing_user = User.create(email: 'test@example.com', password: 'password')
+    User.create(email: 'test@example.com', password: 'password')
     expect(subject).not_to be_valid
   end
 end
