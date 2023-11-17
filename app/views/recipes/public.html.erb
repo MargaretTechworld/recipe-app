@@ -1,12 +1,12 @@
-<div class="public">
-  <h3>Here is a list of public recipes</h3>
+<div class="recipe">
+  <h3>public recipes</h3>
   <% @recipes.each do |recipe| %>
     <div class='recipe_box'>
       <div class='recipe_name'>
-        <%= link_to "#{recipe.name}", recipe_path(recipe.id) %>
-        <p>by: <%= recipe.user.name %></p>
+       <h3><%= link_to "#{recipe.name}", recipe_path(recipe.id) %></h3>
+        <p class="recipe_user">by: <%= recipe.user.name %></p>
       </div>
-      <div class='detail'>
+      <div class="recipe_description">
         <p>total number of foods: <%= recipe.foods.count %></p>
         <p>total price of foods: $<%= recipe.foods.sum(:price) %></p>
       </div>
