@@ -1,0 +1,60 @@
+<h3>Recipe no.<%= @recipe.id %> full description</h3>
+<h3><%= @recipe.name %></h3>
+<section class="recipe-details">
+  <div class="d-flex gap">
+    <div class="right">
+      <p class="input">Preparation time: <%= @recipe.preparation_time %> mins </p>
+      <p  class="input">Cooking time: <%= @recipe.cooking_time %> mins </p>
+    </div>
+    <%= form_for @recipe, url: public_toggle_recipe_path(@recipe), method: :patch, remote: true, authenticity_token: true, html: { class: 'toggle-form' } do |f| %>
+        <div class="slider-container">
+        <span class="switch-label">Public</span>
+        <label class="switch">
+          <%= f.check_box :public, { class: "toggle-switch" }, 0, 1 %>
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <%= f.hidden_field :public, value: @recipe.public ? 0 : 1 %>
+      <%= f.submit 'Toggle', class: 'hidden-submit', style: 'display: none;' %>
+    <% end %>
+  </div>
+  <p  class="input"><%= @recipe.description%></p>
+  <div class="d-flex gap bottom-line p-1">
+    <%= link_to  "Generate shopping list", general_shopping_list_recipe_path(@recipe), method: :post, class: "btn btn-dark" %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-dark" %>
+  </div>
+</section>
+ <%if @recipe_foods == []%>
+      <h2>No ingredients yet!</h2>
+    <%else%>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="input title">Ingredient</th>
+      <th class="input title">Quantity</th>
+      <th class="input title">Value</th>
+      <th class="input title">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td class="input"><%= recipe_food.food.name %></td>
+        <td class="input"><%= recipe_food.quantity %></td>
+        <td class="input"><%= recipe_food.food.price %></td>
+        <td class="input">
+          <%= link_to 'Delete', recipe_food_path(recipe_food), data: { turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-dark' %>
+          <button class="modify-button btn btn-dark">Modify</button>
+          <div class="modify-form" style="display: none;">
+            <%= form_for recipe_food, url: modify_recipe_food_path(recipe_food), method: :patch, remote: true, authenticity_token: true do |f| %>
+              <%= f.label :quantity %>
+              <%= f.text_field :quantity, value: recipe_food.quantity %>
+              <%= f.submit 'Update', class: 'modify-submit' %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+    <%end%>
+</table>

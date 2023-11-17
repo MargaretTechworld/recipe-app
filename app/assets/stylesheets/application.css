@@ -1,0 +1,198 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+  padding: 10px;
+}
+
+/* Styles for the slider switch */
+.slider-container {
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 15px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  border-radius: 15px;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 2px;
+  bottom: 2px;
+  background-color: black;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* Change the appearance of the slider when it's checked */
+.switch input:checked + .slider {
+  background-color: #2196f3;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.d-flex {
+  display: flex;
+  gap: 55%;
+}
+
+.bottom-line {
+  border-bottom: 1px black solid;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+h3 {
+  margin-left: 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.title {
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+
+  /* margin-left: 30%; */
+  color: black;
+}
+
+.noBorder {
+  border: none;
+}
+
+.add {
+  align-items: end;
+  position: absolute;
+  right: 10px;
+}
+
+.food_title {
+  padding-top: 40px;
+}
+
+.nav-link,
+.nav-link :hover {
+  font-size: smaller;
+  text-decoration: none;
+  color: #ccc;
+  margin: 0 20%;
+}
+
+.navigation-bar {
+  border-radius: 6px;
+  background-color: #222;
+  list-style: circle;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.formable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nput-sec {
+  min-width: 800px;
+  height: 36px;
+}
+
+.recipe {
+  margin-top: -2%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recipe_box {
+  display: flex;
+  gap: 30px;
+  width: 80%;
+  border: solid 1px grey;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #f1efef;
+}
+
+/* .recipe_name {
+  width: 40%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-content: center;
+  margin: 5px;
+} */
+
+.recipe_box p {
+  line-height: 30px;
+  color: #26577c;
+  font-weight: 500;
+}
+
+.recipe_description {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.recipe_user {
+  margin-left: 8px;
+}
