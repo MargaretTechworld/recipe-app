@@ -60,8 +60,6 @@ class RecipeFoodsController < ApplicationController
   def create
     recipe = Recipe.find(params[:recipe_id])
     quantity = params[:recipe_food][:quantity]
-    # food_unit = params[:recipe_food][:food]
-    # food_unit.split.first
     food = Food.find(params[:recipe_food][:food])
 
     recipe_food = RecipeFood.new(food:, recipe:, quantity:)
